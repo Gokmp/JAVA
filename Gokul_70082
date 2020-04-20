@@ -1,0 +1,183 @@
+package com.rest.samplevehicles.beans;
+
+        import javax.xml.bind.annotation.XmlRootElement;
+
+        @XmlRootElement
+        public class Vehicle {
+
+                private String manufacturer;
+                private int model;
+                private int year;
+                private String colour;
+                private String bodytype;
+                private String fueltype;
+                public Vehicle(){}
+                public Vehicle(String manufacturer, int model, int year, String colour, String bodytype, String fueltype)
+                {
+                        super();
+                        this.manufacturer = manufacturer;
+                        this.model = model;
+                        this.year = year;
+                        this.colour = colour;
+                        this.bodytype = bodytype;
+                        this.fueltype = fueltype;
+                }
+                public String getManufacturer()
+                {
+                        return manufacturer;
+                }
+                public void setManufacturer(String manufacturer)
+                {
+                        this.manufacturer = manufacturer;
+                }
+                public int getModel()
+                {
+                        return model;
+                }
+                public void setModel(int model)
+                {
+                        this.model = model;
+                }
+                public int getYear()
+                {
+                        return year;
+                }
+                public void setYear(int year)
+                {
+                        this.year = year;
+                }
+                public String getColour()
+                {
+                        return colour;
+                }
+                public void setColour(String colour)
+                {
+                        this.colour = colour;
+                }
+                public String getBodytype()
+                {
+                        return bodytype;
+                }
+                public void setBodytype(String bodytype)
+                {
+                        this.bodytype = bodytype;
+                }
+                public String getFueltype()
+                {
+                        return fueltype;
+                }
+                public void setFueltype(String fueltype)
+                {
+                        this.fueltype = fueltype;
+                }
+               
+               
+               
+        }
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+        package com.rest.samplevehicles.resources;
+
+        import java.util.List;
+
+        import javax.ws.rs.GET;
+        import javax.ws.rs.Path;
+        import javax.ws.rs.Produces;
+        import javax.ws.rs.core.Context;
+        import javax.ws.rs.core.HttpHeaders;
+        import javax.ws.rs.core.MediaType;
+
+        import com.rest.samplevehicles.beans.Vehicle;
+        import com.rest.samplevehicles.services.VehicleService;
+
+
+        @Path("/vehicles")
+        public class Vehicles {
+
+                VehicleService vehicleService = new VehicleService();  
+
+        @GET
+        @Produces({MediaType.APPLICATION_XML})
+         public List<Vehicle> getvehicles(@Context HttpHeaders headers)
+         {
+                List<Vehicle> vehicles = vehicleService.getvehicles();
+                return vehicles;
+         }
+        }
+
+       
+       
+       
+       
+        public Vehicle(String manufacturer, int model, int year, String colour, String bodytype, String fueltype)
+     
+       
+        package com.rest.samplevehicles.services;
+
+        import java.util.*;
+
+        import com.rest.samplevehicles.beans.Vehicle;
+
+        public class VehicleService {
+               
+            public List<Vehicle> getAllStudents()
+            {
+                List<Vehicle> Vehicles = new ArrayList<Vehicle>();      
+                Vehicle s1 = new Vehicle("BNW", 2007, 1996, "Black", "Hatchback","Gasoline");
+                Vehicle s2 = new Vehicle("FORD",2007,1996,"White","Sedan","Gasoline");
+                vehicles.add(s1);
+                vehicles.add(s2);
+                return vehicles;
+            }  
+        }
+       
+       
+        @GET
+        @Produces(MediaType.APPLICATION_XML)
+        @Path("/{rollno}")
+        public Vehicle getVehicleWithmanufactues(@PathParam("manufacturer")String  manufacturer)
+        {
+                Vehicle vehicle = VehicleService.getVehicleWithmanufactues(getVehicleWithmanufactues);
+                return vehicle;
+        }
+       
+       
+        @POST
+        @Produces(MediaType.APPLICATION_XML)
+        public String addVEhicle(Vehicle manufacture)
+        {
+               
+            return VehicleService.addStudent(manufacture);
+
+        }
+
+        @PUT
+        @Produces(MediaType.APPLICATION_XML)
+        @Path("/{manufacture}")
+        public Vehicle updatevehicle(@PathParam("manufacturer")int model)
+        {
+                vehicle.setModel(int model)
+                return VehicleService.update(model);
+        }
+
+        @DELETE
+        @Produces(MediaType.APPLICATION_XML)
+        @Path("/{manufacture}")
+        public String removevehicle(@PathParam("manufacturer") int model)
+        {
+        return VehicleService.delete(model);
+
+        }
+       
+       
+       
